@@ -54,7 +54,8 @@ def main() -> None:
     config['ns'].mm = MusicManager({
         'bang': (f'{base_dir}/assets/sounds/bang.ogg', SoundGroup.EFFECT),
         'score': (f'{base_dir}/assets/sounds/score.ogg', SoundGroup.EFFECT),
-        'game': (f'{base_dir}/assets/sounds/game.ogg', SoundGroup.SOUND)
+        'game': (f'{base_dir}/assets/sounds/game.ogg', SoundGroup.SOUND),
+        'lobby': (f'{base_dir}/assets/sounds/lobby.ogg', SoundGroup.SOUND)
     })
 
     # Configure sounds volume
@@ -105,7 +106,8 @@ def main() -> None:
 
         elif config['scene'] == 'lobby':
             scenes.lobby.functions.check_events(config, scene_buttons)
-            scenes.lobby.functions.update(bg, scene_buttons, caption)
+            scenes.lobby.functions.update(bg, scene_buttons, caption, config)
+
 
         elif config['scene'] == 'table':
             scenes.table.functions.check_events(scene_buttons)

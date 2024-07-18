@@ -116,6 +116,9 @@ def update(
     if config['sub_scene'] == 'game':
         pygame.mixer.unpause()
 
+        if config['ns'].mm.get('lobby').get_num_channels():
+            config['ns'].mm.get('lobby').stop()
+
         if not config['ns'].mm.get('game').get_num_channels():
             config['ns'].mm.get('game').play(-1)
 
@@ -163,6 +166,9 @@ def update(
         check_collides(config, astrs, boosts, plate, end)
 
     elif config['sub_scene'] == 'end':
+        if not config['ns'].mm.get('lobby').get_num_channels():
+            config['ns'].mm.get('lobby').play(-1)
+
         bg.blit()
 
         end.update()
